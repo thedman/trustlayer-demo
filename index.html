@@ -854,9 +854,8 @@
       </div>`).join('');
 
     if (!document.getElementById('tab-audit').classList.contains('active')) {
-      _auditCount++;
       const b = document.getElementById('auditBadge');
-      b.textContent = _auditCount;
+      b.textContent = log.length;
       b.classList.add('visible');
     }
   }
