@@ -424,6 +424,7 @@ export async function generate_risk_summary(vendorId) {
     high_flags: highFlags.length,
     medium_flags: mediumFlags.length,
     soc2_exceptions: soc2.exception_count,
+    soc2_exceptions_detail: soc2.exceptions || [],
     contract_status: contract.contract_status,
     all_flags: allFlags,
     required_actions: requiredActions,
@@ -468,7 +469,7 @@ function _get_soc2_flags(vendor) {
   if (penTestAgeMonths > 12) flags.push({ severity: penTestAgeMonths > 18 ? "HIGH" : "MEDIUM", control: "Penetration Testing", finding: `Penetration test is ${penTestAgeMonths} months old — ${penTestAgeMonths > 18 ? "critically overdue" : "approaching"} the 12-month refresh requirement.`, policy_ref: "TPRM-POL-005" });
   if (s.subprocessors && s.subprocessors.length > 8) flags.push({ severity: "MEDIUM", control: "Subprocessor Concentration", finding: `${s.subprocessors.length} subprocessors identified — elevated supply chain risk. Confirm each has been assessed.`, policy_ref: "TPRM-POL-008" });
 
-  return { policy_flags: flags, exception_count: s.exceptions.length, report_age_months: ageMonths, penetration_test_age_months: penTestAgeMonths };
+  return { policy_flags: flags, exception_count: s.exceptions.length, exceptions: s.exceptions, report_age_months: ageMonths, penetration_test_age_months: penTestAgeMonths };
 }
 
 function _get_questionnaire_flags(vendor) {

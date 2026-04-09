@@ -25,15 +25,15 @@
     .topbar-left { display: flex; align-items: center; gap: 10px; }
     .topbar-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: #f4f1eb; }
     .topbar-logo span { color: var(--teal-light); }
-    .topbar-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.1); }
-    .topbar-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(244,241,235,0.35); text-transform: uppercase; }
+    .topbar-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.2); }
+    .topbar-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(244,241,235,0.65); text-transform: uppercase; }
     .topbar-right { display: flex; align-items: center; gap: 14px; }
     .reg-badges { display: flex; gap: 5px; }
     .reg-badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 4px; background: rgba(26,107,90,0.15); border: 1px solid rgba(26,107,90,0.25); color: var(--teal-light); }
     .status-wrap { display: flex; align-items: center; gap: 5px; }
     .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); animation: pdot 2s ease-in-out infinite; }
     @keyframes pdot { 0%,100%{opacity:1}50%{opacity:0.3} }
-    .status-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; color: rgba(244,241,235,0.3); }
+    .status-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; color: rgba(244,241,235,0.6); }
 
     .layout { flex: 1; display: grid; grid-template-columns: 230px 1fr 340px; overflow: hidden; }
 
@@ -133,6 +133,8 @@
     .rc-flag-sev { font-family: 'IBM Plex Mono', monospace; font-size: 0.48rem; font-weight: 500; display: block; margin-bottom: 2px; }
     .rc-flag-sev.CRITICAL { color: var(--red); } .rc-flag-sev.HIGH { color: var(--orange); } .rc-flag-sev.MEDIUM { color: var(--gold); }
     .rc-policy-ref { font-family: 'IBM Plex Mono', monospace; font-size: 0.46rem; color: var(--mist); margin-top: 3px; }
+    .rc-flag-ctrl { font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; color: var(--ink-3); font-weight: 500; display: block; margin-bottom: 2px; }
+    .rc-exception { font-size: 0.68rem; color: var(--slate); padding: 6px 10px; border-left: 2px solid var(--gold-light); margin-bottom: 5px; background: rgba(201,168,76,0.04); line-height: 1.5; border-radius: 0 4px 4px 0; }
     .rc-actions-list { list-style: none; padding: 0; }
     .rc-action-item { font-size: 0.72rem; color: var(--slate); padding: 6px 0; border-bottom: 1px solid var(--border-2); line-height: 1.5; }
     .rc-action-item:last-child { border-bottom: none; }
@@ -147,6 +149,8 @@
     .audit-tool.blocked { color: var(--red); }
     .audit-vendor { color: var(--gold); margin-bottom: 1px; }
     .audit-output { color: var(--slate); line-height: 1.4; }
+    .vendor-reviewed { font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; color: var(--mist); margin-bottom: 6px; }
+    .audit-tool-version { font-family: 'IBM Plex Mono', monospace; font-size: 0.48rem; color: var(--mist); margin-bottom: 1px; }
     .audit-status-success { color: var(--teal); margin-top: 2px; }
     .audit-status-error { color: var(--red); margin-top: 2px; }
     .audit-status-blocked { color: var(--red); margin-top: 2px; }
@@ -194,12 +198,12 @@
 
     .arch-footer { background: var(--ink); padding: 6px 20px; display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
     .arch-box { padding: 2px 7px; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 0.48rem; }
-    .arch-client { background: rgba(255,255,255,0.05); color: rgba(244,241,235,0.45); }
-    .arch-gateway { background: rgba(26,107,90,0.18); color: var(--teal-light); }
-    .arch-agent { background: rgba(201,168,76,0.12); color: var(--gold-light); }
-    .arch-log { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); color: rgba(244,241,235,0.3); }
-    .arch-arrow { color: rgba(255,255,255,0.15); font-size: 0.5rem; }
-    .arch-tagline { margin-left: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; color: rgba(244,241,235,0.18); }
+    .arch-client { background: rgba(255,255,255,0.07); color: rgba(244,241,235,0.72); }
+    .arch-gateway { background: rgba(26,107,90,0.25); color: var(--teal-light); }
+    .arch-agent { background: rgba(201,168,76,0.18); color: var(--gold-light); }
+    .arch-log { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: rgba(244,241,235,0.65); }
+    .arch-arrow { color: rgba(255,255,255,0.4); font-size: 0.5rem; }
+    .arch-tagline { margin-left: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; color: rgba(244,241,235,0.52); }
 
     /* ── CONTEXT BANNER ── */
     .context-banner {
@@ -382,6 +386,7 @@
         <div class="vendor-name">${v.name}</div>
         <div class="vendor-id">${v.vendor_id}</div>
         <div class="vendor-meta">${v.category}<br>${v.tier} · ${v.data_residency}</div>
+        <div class="vendor-reviewed">Reviewed: ${v.last_reviewed}</div>
         <span class="risk-badge risk-${v.risk_level}">${v.risk_level} RISK</span>
       </div>`).join('');
   }
@@ -718,14 +723,21 @@
   }
 
   function inferSourceType(flag) {
-    const ref = (flag.policy_ref || '').toLowerCase();
-    if (ref.includes('soc')) return 'soc2_report';
-    if (ref.includes('contract') || ref.includes('priv')) return 'contract_review';
+    const ref = (flag.policy_ref || '').toUpperCase();
+    const soc2Refs = ['TPRM-POL-003', 'TPRM-POL-005', 'TPRM-POL-008', 'SEC-POL-011', 'SEC-POL-007'];
+    const contractRefs = ['TPRM-POL-002', 'PRIV-POL-004'];
+    const questionnaireRefs = ['TPRM-POL-001', 'TPRM-POL-006', 'HR-POL-003', 'TPRM-POL-009', 'SEC-POL-012'];
+    if (soc2Refs.includes(ref)) return 'soc2_report';
+    if (contractRefs.includes(ref)) return 'contract_review';
+    if (questionnaireRefs.includes(ref)) return 'security_questionnaire';
     return 'assessment_evidence';
   }
 
+  const SOURCE_LABELS = { soc2_report: 'SOC 2 Report', contract_review: 'Contract Review', security_questionnaire: 'Security Questionnaire', assessment_evidence: 'Assessment Evidence' };
+
   function inferSourceLabel(flag) {
-    return flag.policy_ref || 'Scoped assessment evidence';
+    const type = inferSourceType(flag);
+    return (SOURCE_LABELS[type] || type) + (flag.policy_ref ? ` · ${flag.policy_ref}` : '');
   }
 
   function deriveTraceStatus(steps) {
@@ -829,9 +841,10 @@
           <div class="rc-flag-box"><div class="rc-flag-num HIGH">${s.high_flags}</div><div class="rc-flag-label">HIGH</div></div>
           <div class="rc-flag-box"><div class="rc-flag-num MEDIUM">${s.medium_flags}</div><div class="rc-flag-label">MEDIUM</div></div>
         </div>
-        ${top.length ? `<div class="rc-section-title">Top Findings</div>${top.map(f=>`<div class="rc-flag-item ${f.severity}"><span class="rc-flag-sev ${f.severity}">${f.severity}</span>${esc(f.finding)}<div class="rc-policy-ref">${f.policy_ref||''}</div></div>`).join('')}` : ''}
+        ${top.length ? `<div class="rc-section-title">Top Findings</div>${top.map(f=>`<div class="rc-flag-item ${f.severity}"><span class="rc-flag-sev ${f.severity}">${f.severity}</span>${f.control||f.area ? `<span class="rc-flag-ctrl">${esc(f.control||f.area)}</span>` : ''}${esc(f.finding)}<div class="rc-policy-ref">${f.policy_ref||''}</div></div>`).join('')}` : ''}
+        ${s.soc2_exceptions_detail?.length ? `<div class="rc-section-title">SOC 2 Exceptions (${s.soc2_exceptions_detail.length})</div>${s.soc2_exceptions_detail.map(ex=>`<div class="rc-exception">${esc(ex)}</div>`).join('')}` : ''}
         ${s.required_actions?.length ? `<div class="rc-section-title">Required Actions</div><ul class="rc-actions-list">${s.required_actions.map(a=>`<li class="rc-action-item">${esc(a)}</li>`).join('')}</ul>` : ''}
-        <div class="rc-footer">Engine: ${s.scoring_engine_version} · ${s.regulatory_frameworks?.join(' · ')}<br>Generated: ${new Date(s.summary_generated).toLocaleString('en-CA')}</div>
+        <div class="rc-footer">Engine: ${s.scoring_engine_version} · ${s.regulatory_frameworks?.join(' · ')}<br>Generated: ${new Date(s.summary_generated).toLocaleString('en-CA')} · Next Review Due: ${calcNextReview(s.summary_generated, s.recommended_review_frequency)}</div>
       </div>`;
     if (!document.getElementById('tab-risk').classList.contains('active')) {
       document.getElementById('riskBadge').classList.add('visible');
@@ -846,8 +859,9 @@
 
     document.getElementById('auditLogInner').innerHTML = log.slice().reverse().map(e => `
       <div class="audit-entry${e.status === 'blocked' ? ' policy-block' : ''}">
-        <div class="audit-time">${new Date(e.timestamp).toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}</div>
+        <div class="audit-time">${new Date(e.timestamp).toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit',second:'2-digit'})} · Session: ${e.session_id||'—'}</div>
         <div class="audit-tool${e.status === 'blocked' ? ' blocked' : ''}">${e.tool}</div>
+        ${e.tool_version ? `<div class="audit-tool-version">v${e.tool_version}</div>` : ''}
         <div class="audit-vendor">Vendor: ${e.vendor_id}</div>
         <div class="audit-output">${e.output_summary||e.error||'—'}</div>
         <div class="audit-status-${e.status === 'blocked' ? 'blocked' : e.status}">${(e.status||'').toUpperCase()}</div>
@@ -917,6 +931,14 @@
 
   function setInput(on) { document.getElementById('questionInput').disabled=!on; document.getElementById('sendBtn').disabled=!on; }
   function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function calcNextReview(generatedAt, frequency) {
+    const d = new Date(generatedAt);
+    if (frequency === 'Quarterly') d.setMonth(d.getMonth() + 3);
+    else if (frequency === 'Semi-annual') d.setMonth(d.getMonth() + 6);
+    else d.setFullYear(d.getFullYear() + 1);
+    return d.toLocaleDateString('en-CA');
+  }
 
   window._onAuditLog = () => renderAuditLog();
   init();
