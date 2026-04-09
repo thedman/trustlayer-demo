@@ -1,0 +1,6 @@
+name = "yellow-bar-4f15"
+main = "trustlayer_worker.js"
+compatibility_date = "2024-01-01"
+
+# ANTHROPIC_API_KEY is stored as a Cloudflare secret (wrangler secret put ANTHROPIC_API_KEY)
+# and is NOT managed here — it persists across deployments automatically.
