@@ -205,6 +205,92 @@
     .arch-arrow { color: rgba(255,255,255,0.4); font-size: 0.5rem; }
     .arch-tagline { margin-left: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; color: rgba(244,241,235,0.52); }
 
+    /* ── BLOCKED ACTION CARD ── */
+    .blocked-card { background: var(--paper); border: 1px solid rgba(179,58,58,0.3); border-radius: 12px; overflow: hidden; align-self: flex-start; max-width: 94%; width: 94%; }
+    .blocked-card-header { background: var(--red); padding: 9px 14px; display: flex; align-items: center; gap: 8px; }
+    .blocked-card-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; color: white; font-weight: 500; }
+    .blocked-card-body { padding: 12px 14px; }
+    .blocked-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+    .blocked-meta-item { background: var(--paper-2); border: 1px solid var(--border-2); border-radius: 6px; padding: 6px 9px; }
+    .blocked-meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mist); margin-bottom: 2px; }
+    .blocked-meta-value { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; color: var(--ink-3); font-weight: 500; }
+    .blocked-meta-value.risk-high { color: var(--red); }
+    .blocked-policy-name { font-family: 'Playfair Display', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .blocked-action-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--red); font-weight: 500; margin-bottom: 8px; }
+    .blocked-reason { background: var(--red-bg); border: 1px solid rgba(179,58,58,0.15); border-radius: 6px; padding: 8px 10px; font-size: 0.72rem; color: var(--ink); line-height: 1.6; margin-bottom: 10px; }
+    .blocked-section-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.46rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mist); margin-bottom: 5px; }
+    .blocked-reg-refs { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+    .blocked-reg-ref { font-family: 'IBM Plex Mono', monospace; font-size: 0.46rem; padding: 2px 7px; border-radius: 4px; background: var(--red-bg); border: 1px solid rgba(179,58,58,0.15); color: var(--red); }
+    .blocked-guidance { list-style: none; padding: 0; margin-bottom: 10px; }
+    .blocked-guidance li { font-size: 0.7rem; color: var(--slate); padding: 3px 0; line-height: 1.5; }
+    .blocked-guidance li::before { content: '→ '; color: var(--mist); }
+    .blocked-actions { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
+    .blocked-btn { padding: 6px 13px; border-radius: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 0.52rem; letter-spacing: 0.05em; cursor: pointer; border: 1px solid; transition: all 0.2s; }
+    .blocked-btn-escalate { background: var(--red-bg); border-color: rgba(179,58,58,0.3); color: var(--red); }
+    .blocked-btn-escalate:hover { background: var(--red); color: white; }
+    .blocked-btn-escalate:disabled { opacity: 0.5; cursor: not-allowed; }
+    .blocked-btn-exception { background: none; border-color: var(--border); color: var(--slate); }
+    .blocked-btn-exception:hover { border-color: var(--mist); color: var(--ink-3); }
+    .blocked-footer { font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; color: var(--mist); padding-top: 8px; border-top: 1px solid var(--border-2); line-height: 1.7; }
+    .blocked-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; letter-spacing: 0.1em; color: var(--red); padding: 0 0 4px 2px; }
+
+    /* ── ESCALATION CARD ── */
+    .escalation-card { border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 10px 12px; margin-top: 8px; background: rgba(201,168,76,0.04); }
+    .escalation-card.approved { border-color: rgba(26,107,90,0.3); background: var(--teal-bg); }
+    .escalation-header { font-family: 'IBM Plex Mono', monospace; font-size: 0.52rem; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 6px; font-weight: 500; }
+    .escalation-header.approved { color: var(--teal); }
+    .escalation-detail { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; color: var(--slate); line-height: 1.7; }
+    .escalation-detail strong { color: var(--ink-3); }
+    .escalation-ref { font-family: 'IBM Plex Mono', monospace; font-size: 0.48rem; color: var(--mist); margin-top: 5px; }
+    .escalation-ref.approved { color: var(--teal); }
+    .escalation-sim-btn { margin-top: 8px; padding: 5px 11px; border-radius: 5px; font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; letter-spacing: 0.05em; cursor: pointer; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); color: var(--gold); transition: all 0.2s; }
+    .escalation-sim-btn:hover { background: rgba(201,168,76,0.18); }
+
+    /* ── POLICY ENGINE TAB ── */
+    .policy-engine-tab-header { padding: 10px 12px 9px; border-bottom: 1px solid var(--border-2); margin: -12px -12px 10px; background: var(--paper-2); }
+    .policy-engine-tab-title { font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+    .policy-engine-tab-meta { font-family: 'IBM Plex Mono', monospace; font-size: 0.48rem; color: var(--mist); line-height: 1.6; }
+    .policy-engine-section { font-family: 'IBM Plex Mono', monospace; font-size: 0.46rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mist); margin: 12px 0 6px; }
+    .policy-card { background: var(--paper); border: 1px solid var(--border-2); border-radius: 7px; padding: 9px 11px; margin-bottom: 6px; }
+    .policy-card.triggered { border-color: rgba(179,58,58,0.25); background: var(--red-bg); }
+    .policy-card.blocked-trigger { border-color: rgba(179,58,58,0.3); background: var(--red-bg); }
+    .policy-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+    .policy-card-id { font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; color: var(--teal); font-weight: 500; margin-bottom: 2px; }
+    .policy-card-name { font-family: 'Playfair Display', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); }
+    .policy-card-desc { font-size: 0.68rem; color: var(--slate); line-height: 1.5; margin-bottom: 6px; }
+    .policy-card-meta { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 4px; }
+    .policy-meta-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; padding: 1px 6px; border-radius: 4px; background: var(--teal-bg); border: 1px solid rgba(26,107,90,0.15); color: var(--teal); }
+    .policy-ctrl-id { font-family: 'IBM Plex Mono', monospace; font-size: 0.46rem; color: var(--mist); }
+    .policy-status-active { font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; padding: 2px 6px; border-radius: 10px; background: var(--teal-bg); border: 1px solid rgba(26,107,90,0.2); color: var(--teal); white-space: nowrap; flex-shrink: 0; }
+    .policy-triggered-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; padding: 2px 6px; border-radius: 10px; background: var(--red-bg); border: 1px solid rgba(179,58,58,0.2); color: var(--red); white-space: nowrap; flex-shrink: 0; }
+    .policy-blocked-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; padding: 2px 6px; border-radius: 10px; background: var(--red-bg); border: 1px solid rgba(179,58,58,0.3); color: var(--red); white-space: nowrap; flex-shrink: 0; font-weight: 600; }
+    .policy-engine-empty { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--mist); padding: 20px; font-style: italic; line-height: 1.8; }
+
+    /* ── GUIDED DEMO MODE ── */
+    .demo-btn { padding: 4px 14px; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 0.5rem; letter-spacing: 0.08em; color: var(--gold-light); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .demo-btn:hover { background: rgba(201,168,76,0.22); border-color: rgba(201,168,76,0.5); }
+    .demo-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .demo-step-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; color: rgba(201,168,76,0.65); transition: opacity 0.3s; }
+
+    /* ── TOPBAR POLICY INDICATOR ── */
+    .topbar-policy { display: flex; align-items: center; gap: 5px; }
+    .topbar-policy-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold-light); }
+    .topbar-policy-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.48rem; color: rgba(201,168,76,0.8); letter-spacing: 0.05em; }
+
+    /* ── AUDIT RECORD ── */
+    .audit-record-panel { background: var(--ink); color: #f4f1eb; border-radius: 8px; padding: 14px; margin-top: 8px; font-family: 'IBM Plex Mono', monospace; }
+    .audit-record-header { font-size: 0.52rem; letter-spacing: 0.18em; color: var(--teal-light); margin-bottom: 10px; font-weight: 500; }
+    .audit-record-field { font-size: 0.54rem; color: rgba(244,241,235,0.85); margin-bottom: 4px; line-height: 1.5; }
+    .audit-record-field strong { color: rgba(244,241,235,0.45); margin-right: 6px; }
+    .audit-record-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 8px 0; }
+    .audit-record-section { font-size: 0.44rem; letter-spacing: 0.15em; color: rgba(244,241,235,0.35); margin: 8px 0 5px; text-transform: uppercase; }
+    .generate-audit-btn { width: 100%; padding: 8px; background: none; border: 1px solid rgba(26,107,90,0.35); border-radius: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; color: var(--teal); cursor: pointer; transition: all 0.2s; margin-top: 4px; }
+    .generate-audit-btn:hover { background: var(--teal-bg); border-color: var(--teal); }
+    .audit-entry.escalated { border-color: rgba(201,168,76,0.25); background: rgba(201,168,76,0.04); }
+    .audit-entry.approved { border-color: rgba(26,107,90,0.2); background: var(--teal-bg); }
+    .audit-status-escalated { color: var(--gold); margin-top: 2px; font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; }
+    .audit-status-approved { color: var(--teal); margin-top: 2px; font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; }
+
     /* ── CONTEXT BANNER ── */
     .context-banner {
       background: var(--paper-2);
@@ -256,6 +342,11 @@
       <span class="reg-badge">SR 13-19</span>
       <span class="reg-badge">NIST CSF</span>
     </div>
+    <div class="topbar-sep"></div>
+    <div class="topbar-policy">
+      <div class="topbar-policy-dot"></div>
+      <div class="topbar-policy-label">Policy Engine v2026.01 · 10 Active Controls</div>
+    </div>
     <div class="status-wrap">
       <div class="status-dot"></div>
       <div class="status-label">Live Control-Layer Demo · Mock Data</div>
@@ -265,7 +356,7 @@
 
 <div class="context-banner">
   <div class="context-banner-title">TrustLayer — Enterprise AI Governance &amp; Control Framework <span class="context-demo-tag">Demo</span></div>
-  <div class="context-banner-sub">A prototype demonstrating how AI systems can be governed through policy enforcement, action control, and real-time decision boundaries in enterprise environments. Illustrates how organizations can enable AI adoption while maintaining control over sensitive actions, data access, and system behavior.</div>
+  <div class="context-banner-sub">All decisions are evaluated against active enterprise policies before the AI acts. Each tool call is logged to an immutable audit trail. Blocked actions require explicit governance intervention — escalation routes to a human Control Owner. Every output is designed to be audit-ready.</div>
 </div>
 
 <div class="layout">
@@ -323,6 +414,10 @@
         Audit Evidence
         <span class="tab-badge" id="auditBadge">0</span>
       </button>
+      <button class="tab-btn" id="tab-policy" onclick="switchTab('policy')">
+        Policy Engine
+        <span class="tab-badge" id="policyBadge"></span>
+      </button>
     </div>
     <div class="tab-content active" id="tabRisk">
       <div id="riskCardInner">
@@ -339,7 +434,12 @@
       <div id="auditLogInner">
         <div class="audit-empty">No tool calls yet.<br>Activity appears here in real time.</div>
       </div>
-      <button class="export-btn" onclick="exportAuditLog()">↓ Export Audit Evidence (JSON)</button>
+      <div id="auditRecordOutput" style="display:none;"></div>
+      <button class="generate-audit-btn" id="generateAuditRecordBtn" onclick="generateAndShowAuditRecord()">⊕ Generate Audit Record</button>
+      <button class="export-btn" style="margin-top:5px;" onclick="exportAuditLog()">↓ Export Audit Evidence (JSON)</button>
+    </div>
+    <div class="tab-content" id="tabPolicy">
+      <div class="policy-engine-empty">Select a vendor to view the active policy registry.</div>
     </div>
   </div>
 
@@ -354,10 +454,14 @@
   <span class="arch-arrow">→</span>
   <span class="arch-box arch-log">Audit & Observability</span>
   <span class="arch-tagline">Policy engine determines risk · AI explains and synthesizes · Every step attributable · Audit-ready by design</span>
+  <span style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0;">
+    <span class="demo-step-label" id="demoStepLabel"></span>
+    <button class="demo-btn" id="demoBtnStart" onclick="runGoldenPathDemo()">▶ Start Demo</button>
+  </span>
 </div>
 
 <script type="module">
-  import { get_vendor_profile, get_soc2_findings, get_security_questionnaire, get_contract_review, generate_risk_summary, getAuditLog, resetAuditLog, TOOL_DEFINITIONS, SYSTEM_PROMPT } from './tools.js';
+  import { get_vendor_profile, get_soc2_findings, get_security_questionnaire, get_contract_review, generate_risk_summary, getAuditLog, resetAuditLog, TOOL_DEFINITIONS, SYSTEM_PROMPT, POLICY_REGISTRY } from './tools.js';
 
   const WORKER_URL = "https://yellow-bar-4f15.dmccrory.workers.dev";
   window._sessionId = 'SID-' + Date.now().toString(36).toUpperCase();
@@ -375,6 +479,7 @@
     if (tab === 'audit') { document.getElementById('auditBadge').classList.remove('visible'); _auditCount = 0; }
     if (tab === 'risk') { document.getElementById('riskBadge').classList.remove('visible'); }
     if (tab === 'trace') { document.getElementById('traceBadge').classList.remove('visible'); _traceCount = 0; }
+    if (tab === 'policy') { document.getElementById('policyBadge').classList.remove('visible'); }
   };
 
   // ── INIT ──────────────────────────────────────────────
@@ -420,6 +525,9 @@
     document.getElementById('questionInput').disabled = false;
     document.getElementById('sendBtn').disabled = false;
     document.getElementById('questionInput').focus();
+
+    // Initialise policy engine tab with full registry, no triggered policies yet
+    renderPolicyEngineTab([], []);
   };
 
   window.useChip = el => { document.getElementById('questionInput').value = el.textContent.trim(); sendQuestion(); };
@@ -427,44 +535,97 @@
   window.autoResize = el => { el.style.height = 'auto'; el.style.height = Math.min(el.scrollHeight, 110) + 'px'; };
 
   // ── POLICY EVALUATOR ──────────────────────────────────
+  // Deterministic rules engine — runs before every agent invocation.
+  // Returns full policy metadata so blocked events are audit-ready.
   function evaluatePolicy(question) {
     const q = String(question || '').toLowerCase();
 
+    // Rule: Cross-vendor scope violation (SCOPE-001)
     if (
-      q.includes('all vendors') ||
-      q.includes('across the system') ||
-      q.includes('every vendor') ||
-      q.includes('compare all vendors') ||
-      q.includes('show all vendor data')
+      q.includes('all vendors') || q.includes('across the system') ||
+      q.includes('every vendor') || q.includes('compare all vendors') ||
+      q.includes('show all vendor data') || q.includes('list all vendors')
     ) {
       return {
         decision: 'block',
-        reason: 'Request exceeds the allowed vendor scope for the current session.',
-        policy_ref: 'SCOPE-001',
-        blocked_action: 'Cross-vendor data access',
+        policy_id: 'SCOPE-001', control_id: 'CTRL-DATA-001',
+        policy_name: 'Vendor Scope Restriction', policy_version: 'v2026.01',
+        risk_level: 'HIGH', data_classification: 'Restricted',
+        reason: 'Request scope exceeds the current authorization boundary. Cross-vendor data access requires an elevated session privilege not present in this context.',
+        blocked_action: 'Cross-Vendor Data Access',
+        regulatory_refs: ['OSFI B-10'],
         guidance: [
-          'Ask about the currently selected vendor',
-          'Request a risk summary',
-          'Ask for specific SOC 2, questionnaire, or contract findings'
+          'Ask about the currently selected vendor only',
+          'Request a risk summary for the selected vendor',
+          'Escalate to obtain cross-vendor access authorization'
         ]
       };
     }
 
+    // Rule: Raw document export (EXPORT-001)
     if (
-      q.includes('export full soc 2') ||
-      q.includes('download soc 2') ||
-      q.includes('export report') ||
-      q.includes('raw report')
+      q.includes('export full soc 2') || q.includes('download soc 2') ||
+      q.includes('export report') || q.includes('raw report') ||
+      q.includes('full report') || q.includes('download the report')
     ) {
       return {
         decision: 'block',
-        reason: 'Raw document export is not permitted in this controlled environment.',
-        policy_ref: 'EXPORT-001',
-        blocked_action: 'Raw document export',
+        policy_id: 'EXPORT-001', control_id: 'CTRL-DATA-002',
+        policy_name: 'Raw Document Export Control', policy_version: 'v2026.01',
+        risk_level: 'HIGH', data_classification: 'Confidential',
+        reason: 'Raw third-party documents are classified Confidential and may not be exported from the controlled assessment environment without explicit authorization.',
+        blocked_action: 'Raw Document Export',
+        regulatory_refs: ['OSFI B-10', 'PRIV-POL-004'],
         guidance: [
-          'Request a summary of findings',
-          'Ask for key concerns in the SOC 2 report',
-          'Request a risk assessment for the selected vendor'
+          'Request a structured summary of findings instead',
+          'Use the Export Audit Evidence function (structured output only)',
+          'Escalate to obtain a formal document export exception'
+        ]
+      };
+    }
+
+    // Rule: Write / modify / approve actions (MODIFY-001)
+    if (
+      q.includes('approve this vendor') || q.includes('approve vendor') ||
+      q.includes('mark as approved') || q.includes('mark as low risk') ||
+      q.includes('override') || q.includes('change risk') ||
+      q.includes('set risk') || q.includes('update vendor') ||
+      q.includes('modify the') || q.includes('change the risk level')
+    ) {
+      return {
+        decision: 'block',
+        policy_id: 'MODIFY-001', control_id: 'CTRL-DATA-003',
+        policy_name: 'Read-Only Agent Authorization', policy_version: 'v2026.01',
+        risk_level: 'HIGH', data_classification: 'Restricted',
+        reason: 'This action requires write authorization. AI agents in assessment mode are restricted to read-only operations. Risk record modifications and approval decisions require explicit human authorization by a designated Control Owner.',
+        blocked_action: 'Vendor Record Modification / Approval Decision',
+        regulatory_refs: ['OSFI B-10', 'NIST CSF'],
+        guidance: [
+          'This action requires human authorization — escalate to Risk Officer',
+          'Submit a formal exception or approval request via the GRC system',
+          'The AI provides findings and recommended actions; decisions rest with authorized humans'
+        ]
+      };
+    }
+
+    // Rule: External sharing (EXPORT-001)
+    if (
+      q.includes('send to') || q.includes('email this') ||
+      q.includes('share with') || q.includes('forward this') ||
+      q.includes('send this to')
+    ) {
+      return {
+        decision: 'block',
+        policy_id: 'EXPORT-001', control_id: 'CTRL-DATA-002',
+        policy_name: 'Raw Document Export Control', policy_version: 'v2026.01',
+        risk_level: 'HIGH', data_classification: 'Confidential',
+        reason: 'Third-party risk data may not be transmitted outside the controlled environment without explicit data handling authorization.',
+        blocked_action: 'External Data Sharing',
+        regulatory_refs: ['OSFI B-10', 'PRIV-POL-004'],
+        guidance: [
+          'Use the Export Audit Evidence function for authorized structured outputs',
+          'Escalate to obtain data sharing authorization',
+          'Contact the Privacy Office for cross-boundary data transfer requests'
         ]
       };
     }
@@ -472,36 +633,194 @@
     return {
       decision: 'allow',
       reason: 'Request is within current session scope.',
-      policy_ref: 'ALLOW-DEFAULT'
+      policy_id: 'ALLOW-DEFAULT'
     };
-  }
-
-  // ── POLICY BLOCK MESSAGE ──────────────────────────────
-  function formatPolicyBlockMessage(result) {
-    return [
-      '⚠️ Policy Enforcement Triggered',
-      '',
-      result.reason,
-      '',
-      `Blocked action: ${result.blocked_action}`,
-      `Policy reference: ${result.policy_ref}`,
-      '',
-      'Allowed next steps:',
-      ...result.guidance.map(g => `• ${g}`)
-    ].join('\n');
   }
 
   // ── POLICY AUDIT LOG ──────────────────────────────────
   function logPolicyEvent(result) {
     const entry = {
       timestamp: new Date().toISOString(),
+      session_id: window._sessionId,
       tool: 'policy_engine',
       vendor_id: _selectedVendor?.vendor_id || 'UNKNOWN',
-      output_summary: `${result.blocked_action} blocked (${result.policy_ref})`,
+      input_summary: result.blocked_action || 'Request evaluated',
+      output_summary: `${result.blocked_action || 'Action'} blocked · ${result.policy_id} · ${result.control_id || ''}`,
+      policy_id: result.policy_id,
+      control_id: result.control_id,
+      policy_name: result.policy_name,
       status: 'blocked'
     };
     _policyAuditLog.push(entry);
   }
+
+  // ── BLOCKED ACTION CARD ───────────────────────────────
+  // Replaces the simple chat bubble with a rich, audit-ready card showing
+  // full policy metadata, the triggered rule, and the escalation path.
+  function appendBlockedCard(question, policyResult) {
+    const area = document.getElementById('chatArea');
+    const wrapper = document.createElement('div');
+    const eventId = 'PEVT-' + Date.now().toString(36).toUpperCase();
+    const timestamp = new Date().toISOString();
+
+    const regRefs = (policyResult.regulatory_refs || [])
+      .map(r => `<span class="blocked-reg-ref">${esc(r)}</span>`).join('');
+    const guidance = (policyResult.guidance || [])
+      .map(g => `<li>${esc(g)}</li>`).join('');
+
+    wrapper.innerHTML = `
+      <div class="blocked-label">Policy Engine</div>
+      <div class="blocked-card">
+        <div class="blocked-card-header">
+          <span style="font-size:0.65rem;line-height:1;">⬤</span>
+          <span class="blocked-card-title">ACTION BLOCKED · TRUSTLAYER CONTROL LAYER</span>
+        </div>
+        <div class="blocked-card-body">
+          <div class="blocked-meta-grid">
+            <div class="blocked-meta-item">
+              <div class="blocked-meta-label">Policy ID</div>
+              <div class="blocked-meta-value">${esc(policyResult.policy_id || '')}</div>
+            </div>
+            <div class="blocked-meta-item">
+              <div class="blocked-meta-label">Control ID</div>
+              <div class="blocked-meta-value">${esc(policyResult.control_id || '')}</div>
+            </div>
+            <div class="blocked-meta-item">
+              <div class="blocked-meta-label">Version</div>
+              <div class="blocked-meta-value">${esc(policyResult.policy_version || '')}</div>
+            </div>
+            <div class="blocked-meta-item">
+              <div class="blocked-meta-label">Risk Level</div>
+              <div class="blocked-meta-value risk-high">${esc(policyResult.risk_level || 'HIGH')}</div>
+            </div>
+          </div>
+          <div class="blocked-section-label">Policy Name</div>
+          <div class="blocked-policy-name">${esc(policyResult.policy_name || '')}</div>
+          <div class="blocked-section-label">Blocked Action</div>
+          <div class="blocked-action-label">${esc(policyResult.blocked_action || '')}</div>
+          <div class="blocked-section-label">Data Classification</div>
+          <div style="font-size:0.7rem;color:var(--slate);margin-bottom:8px;">${esc(policyResult.data_classification || 'Restricted')}</div>
+          <div class="blocked-section-label">Reason</div>
+          <div class="blocked-reason">${esc(policyResult.reason || '')}</div>
+          ${regRefs ? `<div class="blocked-section-label">Regulatory References</div><div class="blocked-reg-refs">${regRefs}</div>` : ''}
+          <div class="blocked-section-label">Permitted Next Steps</div>
+          <ul class="blocked-guidance">${guidance}</ul>
+          <div class="blocked-actions">
+            <button class="blocked-btn blocked-btn-escalate" id="esc-btn-${eventId}"
+              onclick="handleEscalation('${eventId}','${esc(policyResult.blocked_action||'')}','${esc(policyResult.policy_id||'')}','${esc(policyResult.control_id||'')}')">
+              ↑ Escalate to Risk Review
+            </button>
+            <button class="blocked-btn blocked-btn-exception"
+              onclick="handleExceptionRequest('${eventId}','${esc(policyResult.policy_id||'')}')">
+              Request Exception
+            </button>
+          </div>
+          <div id="esc-status-${eventId}"></div>
+          <div class="blocked-footer">
+            Event ID: ${eventId} · Evaluated: ${new Date(timestamp).toLocaleString('en-CA')} · Session: ${window._sessionId}<br>
+            Evaluated under: ${esc(policyResult.policy_id || '')} ${esc(policyResult.policy_version || '')}
+          </div>
+        </div>
+      </div>`;
+
+    area.appendChild(wrapper);
+    area.scrollTop = area.scrollHeight;
+
+    // Alert policy engine tab badge
+    if (!document.getElementById('tab-policy').classList.contains('active')) {
+      document.getElementById('policyBadge').textContent = '!';
+      document.getElementById('policyBadge').classList.add('visible');
+    }
+    return wrapper;
+  }
+
+  // ── ESCALATION HANDLERS ───────────────────────────────
+  window.handleEscalation = function(eventId, action, policyId, controlId) {
+    const btn = document.getElementById('esc-btn-' + eventId);
+    const statusDiv = document.getElementById('esc-status-' + eventId);
+    if (btn) { btn.disabled = true; btn.textContent = 'Routing…'; }
+
+    const refId = 'ESCLTN-' + Date.now().toString(36).toUpperCase();
+
+    setTimeout(() => {
+      statusDiv.innerHTML = `
+        <div class="escalation-card">
+          <div class="escalation-header">⬤ REVIEW INITIATED · PENDING HUMAN AUTHORIZATION</div>
+          <div class="escalation-detail">
+            Action escalated: <strong>${esc(action)}</strong><br>
+            Policy: <strong>${esc(policyId)}</strong> · Control: <strong>${esc(controlId)}</strong><br>
+            Assigned to: <strong>Risk Officer</strong> · 3rd Party Risk Management<br>
+            Expected response: <strong>1 business day</strong>
+          </div>
+          <div class="escalation-ref">Reference: ${refId} · Status: PENDING REVIEW</div>
+          <button class="escalation-sim-btn" onclick="simulateApproval('${eventId}','${refId}','${esc(action)}','${esc(policyId)}')">
+            Simulate: Approval Granted (demo)
+          </button>
+        </div>`;
+
+      const entry = {
+        timestamp: new Date().toISOString(), session_id: window._sessionId,
+        tool: 'escalation_engine', vendor_id: _selectedVendor?.vendor_id || 'UNKNOWN',
+        input_summary: `Escalation: ${action} (${policyId})`,
+        output_summary: `Escalated to Risk Officer · Ref: ${refId}`,
+        status: 'escalated'
+      };
+      _policyAuditLog.push(entry);
+      renderAuditLog();
+    }, 1800);
+  };
+
+  window.simulateApproval = function(eventId, refId, action, policyId) {
+    const statusDiv = document.getElementById('esc-status-' + eventId);
+    statusDiv.innerHTML = `
+      <div class="escalation-card approved">
+        <div class="escalation-header approved">⬤ APPROVAL GRANTED · EXCEPTION AUTHORIZED</div>
+        <div class="escalation-detail">
+          Exception authorized for: <strong>${esc(action)}</strong><br>
+          Policy: <strong>${esc(policyId)}</strong><br>
+          Authorized by: <strong>Risk Officer</strong> · 3rd Party Risk Management<br>
+          Authorization ref: <strong>${refId}-APPROVED</strong><br>
+          Scope: <strong>This session only</strong>
+        </div>
+        <div class="escalation-ref approved">Status: APPROVED · Exception logged to audit record</div>
+      </div>`;
+
+    const entry = {
+      timestamp: new Date().toISOString(), session_id: window._sessionId,
+      tool: 'escalation_engine', vendor_id: _selectedVendor?.vendor_id || 'UNKNOWN',
+      input_summary: `Exception authorization: ${action}`,
+      output_summary: `Approved by Risk Officer · Ref: ${refId}-APPROVED`,
+      status: 'approved'
+    };
+    _policyAuditLog.push(entry);
+    renderAuditLog();
+  };
+
+  window.handleExceptionRequest = function(eventId, policyId) {
+    const refId = 'EXCPT-' + Date.now().toString(36).toUpperCase();
+    const statusDiv = document.getElementById('esc-status-' + eventId);
+    statusDiv.innerHTML = `
+      <div class="escalation-card">
+        <div class="escalation-header">⬤ EXCEPTION REQUEST SUBMITTED</div>
+        <div class="escalation-detail">
+          Exception request created and logged.<br>
+          Policy: <strong>${esc(policyId)}</strong><br>
+          Assigned to: <strong>Control Owner</strong> · Governance &amp; Compliance<br>
+          Review process: <strong>GRC Workflow</strong>
+        </div>
+        <div class="escalation-ref">Reference: ${refId} · Status: SUBMITTED FOR REVIEW</div>
+      </div>`;
+
+    const entry = {
+      timestamp: new Date().toISOString(), session_id: window._sessionId,
+      tool: 'escalation_engine', vendor_id: _selectedVendor?.vendor_id || 'UNKNOWN',
+      input_summary: `Exception request: ${policyId}`,
+      output_summary: `Exception submitted to Control Owner · Ref: ${refId}`,
+      status: 'escalated'
+    };
+    _policyAuditLog.push(entry);
+    renderAuditLog();
+  };
 
   // ── BLOCKED DECISION TRACE ────────────────────────────
   function buildBlockedDecisionTrace(question, policyResult) {
@@ -532,19 +851,25 @@
           output_summary: `${policyResult.blocked_action} blocked`,
           policy_check: {
             result: 'blocked',
-            reason: `${policyResult.reason} (${policyResult.policy_ref})`
+            policy_id: policyResult.policy_id,
+            control_id: policyResult.control_id,
+            policy_name: policyResult.policy_name,
+            policy_version: policyResult.policy_version,
+            reason: `${policyResult.reason} (${policyResult.policy_id})`
           },
-          evidence_refs: [policyResult.policy_ref]
+          evidence_refs: [policyResult.policy_id]
         }
       ],
       evidence_map: [
         {
           evidence_id: 'POL-1',
           source_type: 'policy_rule',
-          source_label: policyResult.policy_ref,
+          source_label: `${policyResult.policy_name || policyResult.policy_id} · ${policyResult.policy_id}`,
           finding: policyResult.blocked_action,
           severity: 'HIGH',
-          policy_ref: policyResult.policy_ref
+          policy_ref: policyResult.policy_id,
+          control_id: policyResult.control_id,
+          regulatory_refs: policyResult.regulatory_refs || []
         }
       ],
       final_decision: {
@@ -559,6 +884,169 @@
     };
   }
 
+  // ── POLICY ENGINE TAB RENDERER ───────────────────────
+  // triggeredPolicyIds = policies flagged by the deterministic risk engine (assessment)
+  // blockedPolicyIds   = policies triggered by the pre-query gate (blocked actions)
+  function renderPolicyEngineTab(triggeredPolicyIds = [], blockedPolicyIds = []) {
+    const tab = document.getElementById('tabPolicy');
+    if (!tab) return;
+
+    const grouped = {};
+    POLICY_REGISTRY.forEach(p => {
+      if (!grouped[p.category]) grouped[p.category] = [];
+      grouped[p.category].push(p);
+    });
+
+    let html = `
+      <div class="policy-engine-tab-header">
+        <div class="policy-engine-tab-title">Policy Engine</div>
+        <div class="policy-engine-tab-meta">
+          Engine: TPRM-ENGINE-2026-01 · Framework: TPRM-POL-2026.01<br>
+          ${POLICY_REGISTRY.length} active controls · Deterministic evaluation · All decisions are traceable
+        </div>
+      </div>`;
+
+    const hasTriggered = triggeredPolicyIds.length > 0 || blockedPolicyIds.length > 0;
+    if (hasTriggered) {
+      html += `<div class="policy-engine-section">Triggered in this session</div>`;
+      POLICY_REGISTRY.filter(p => triggeredPolicyIds.includes(p.id) || blockedPolicyIds.includes(p.id)).forEach(policy => {
+        const isBlocked = blockedPolicyIds.includes(policy.id);
+        html += `
+          <div class="policy-card ${isBlocked ? 'blocked-trigger' : 'triggered'}">
+            <div class="policy-card-header">
+              <div>
+                <div class="policy-card-id">${esc(policy.id)}</div>
+                <div class="policy-card-name">${esc(policy.name)}</div>
+              </div>
+              <span class="${isBlocked ? 'policy-blocked-label' : 'policy-triggered-label'}">${isBlocked ? 'BLOCKED' : 'TRIGGERED'}</span>
+            </div>
+            <div class="policy-card-desc">${esc(policy.description)}</div>
+            <div class="policy-card-meta">${policy.regulatory_mapping.map(r => `<span class="policy-meta-tag">${esc(r)}</span>`).join('')}</div>
+            <div class="policy-ctrl-id">${esc(policy.control_id)} · ${esc(policy.version)}</div>
+          </div>`;
+      });
+      html += `<div class="policy-engine-section">All registered controls</div>`;
+    }
+
+    for (const [category, policies] of Object.entries(grouped)) {
+      const categoryPolicies = hasTriggered
+        ? policies.filter(p => !triggeredPolicyIds.includes(p.id) && !blockedPolicyIds.includes(p.id))
+        : policies;
+      if (categoryPolicies.length === 0) continue;
+      html += `<div class="policy-engine-section">${esc(category)}</div>`;
+      categoryPolicies.forEach(policy => {
+        html += `
+          <div class="policy-card">
+            <div class="policy-card-header">
+              <div>
+                <div class="policy-card-id">${esc(policy.id)}</div>
+                <div class="policy-card-name">${esc(policy.name)}</div>
+              </div>
+              <span class="policy-status-active">ACTIVE</span>
+            </div>
+            <div class="policy-card-desc">${esc(policy.description)}</div>
+            <div class="policy-card-meta">${policy.regulatory_mapping.map(r => `<span class="policy-meta-tag">${esc(r)}</span>`).join('')}</div>
+            <div class="policy-ctrl-id">${esc(policy.control_id)} · ${esc(policy.version)}</div>
+          </div>`;
+      });
+    }
+
+    tab.innerHTML = html;
+  }
+
+  // ── AUDIT RECORD GENERATOR ────────────────────────────
+  function generateAuditRecord() {
+    const baseLog = getAuditLog();
+    const combined = [...baseLog, ..._policyAuditLog].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    const recordId = 'AR-' + Date.now().toString(36).toUpperCase();
+    return {
+      audit_record_id: recordId,
+      generated_at: new Date().toISOString(),
+      session_id: window._sessionId,
+      vendor_id: _selectedVendor?.vendor_id || 'UNKNOWN',
+      vendor_name: _selectedVendor?.name || 'Unknown',
+      assessment_engine: 'TPRM-ENGINE-2026-01',
+      policy_framework_version: 'TPRM-POL-2026.01',
+      total_tool_calls: baseLog.length,
+      policy_events: _policyAuditLog.length,
+      risk_level: _decisionTrace?.final_decision?.risk_level || null,
+      risk_score: _decisionTrace?.final_decision?.risk_score || null,
+      critical_findings: _decisionTrace?.final_decision?.critical_findings ?? null,
+      decision_trace_id: _decisionTrace?.trace_id || null,
+      regulatory_frameworks: ['OSFI B-10', 'OCC 2013-29', 'SR 13-19', 'NIST CSF'],
+      assessor: 'TrustLayer AI Assessment Engine',
+      status: combined.some(e => e.status === 'blocked') ? 'COMPLETED_WITH_POLICY_EVENTS' : 'COMPLETED',
+      tool_call_log: combined
+    };
+  }
+
+  window.generateAndShowAuditRecord = function() {
+    const container = document.getElementById('auditRecordOutput');
+    const btn = document.getElementById('generateAuditRecordBtn');
+    if (!container || !btn) return;
+
+    if (container.dataset.showing === 'true') {
+      container.style.display = 'none';
+      container.dataset.showing = 'false';
+      btn.textContent = '⊕ Generate Audit Record';
+      return;
+    }
+
+    const record = generateAuditRecord();
+    container.style.display = 'block';
+    container.dataset.showing = 'true';
+    btn.textContent = '⊖ Hide Audit Record';
+
+    const noSummary = record.risk_level === null;
+    container.innerHTML = `
+      <div class="audit-record-panel">
+        <div class="audit-record-header">TRUSTLAYER · FORMAL AUDIT RECORD</div>
+        <div class="audit-record-field"><strong>Record ID</strong>${esc(record.audit_record_id)}</div>
+        <div class="audit-record-field"><strong>Generated</strong>${new Date(record.generated_at).toLocaleString('en-CA')}</div>
+        <div class="audit-record-field"><strong>Session ID</strong>${esc(record.session_id)}</div>
+        <div class="audit-record-field"><strong>Status</strong>${esc(record.status)}</div>
+        <hr class="audit-record-divider">
+        <div class="audit-record-section">Subject</div>
+        <div class="audit-record-field"><strong>Vendor</strong>${esc(record.vendor_name)} (${esc(record.vendor_id)})</div>
+        <div class="audit-record-field"><strong>Assessor</strong>${esc(record.assessor)}</div>
+        <div class="audit-record-field"><strong>Engine</strong>${esc(record.assessment_engine)}</div>
+        <div class="audit-record-field"><strong>Policy Framework</strong>${esc(record.policy_framework_version)}</div>
+        <hr class="audit-record-divider">
+        <div class="audit-record-section">Assessment Summary</div>
+        <div class="audit-record-field"><strong>Tool Calls</strong>${record.total_tool_calls}</div>
+        <div class="audit-record-field"><strong>Policy Events</strong>${record.policy_events}</div>
+        ${!noSummary ? `
+          <div class="audit-record-field"><strong>Risk Level</strong>${esc(record.risk_level)}</div>
+          <div class="audit-record-field"><strong>Risk Score</strong>${record.risk_score}</div>
+          <div class="audit-record-field"><strong>Critical Findings</strong>${record.critical_findings}</div>
+          <div class="audit-record-field"><strong>Decision Trace</strong>${esc(record.decision_trace_id)}</div>
+        ` : `<div class="audit-record-field" style="color:rgba(244,241,235,0.35);">Run a full assessment to populate risk fields</div>`}
+        <hr class="audit-record-divider">
+        <div class="audit-record-section">Regulatory Alignment</div>
+        ${record.regulatory_frameworks.map(f => `<div class="audit-record-field">· ${esc(f)}</div>`).join('')}
+      </div>
+      <div style="display:flex;gap:6px;margin-top:5px;">
+        <button class="export-btn" style="flex:1;" onclick="downloadAuditRecord()">↓ Download (JSON)</button>
+        <button class="export-btn" style="flex:0;white-space:nowrap;padding:8px 12px;" onclick="copyAuditRecord(this)">Copy</button>
+      </div>`;
+  };
+
+  window.downloadAuditRecord = function() {
+    const record = generateAuditRecord();
+    const blob = new Blob([JSON.stringify(record, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `trustlayer-audit-record-${window._sessionId}.json`; a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  window.copyAuditRecord = function(btn) {
+    const record = generateAuditRecord();
+    navigator.clipboard?.writeText(JSON.stringify(record, null, 2)).then(() => {
+      if (btn) { const orig = btn.textContent; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = orig, 1500); }
+    });
+  };
+
   // ── SEND QUESTION ─────────────────────────────────────
   window.sendQuestion = async function() {
     if (_isLoading || !_selectedVendor) return;
@@ -571,11 +1059,12 @@
       document.getElementById('chatEmpty')?.remove();
       input.value = ''; input.style.height = 'auto';
       appendMsg('user', q);
-      appendMsg('policy', formatPolicyBlockMessage(policyResult));
+      appendBlockedCard(q, policyResult);
       logPolicyEvent(policyResult);
       buildBlockedDecisionTrace(q, policyResult);
       renderAuditLog();
       renderDecisionTrace(_decisionTrace);
+      renderPolicyEngineTab([], [policyResult.policy_id]);
       return;
     }
 
@@ -589,6 +1078,16 @@
       typing.remove();
       appendMsg('assistant', result.text || result);
       if (result.trace) { _decisionTrace = result.trace; }
+
+      // Demo mode: after assessment completes, switch to Audit Evidence and generate record
+      if (window._demoPendingAudit) {
+        window._demoPendingAudit = false;
+        _setDemoStep('Complete · Audit record generated');
+        setTimeout(() => {
+          switchTab('audit');
+          setTimeout(() => window.generateAndShowAuditRecord(), 700);
+        }, 1200);
+      }
     } catch(err) { typing.remove(); appendMsg('assistant', `Error: ${err.message}`); }
     _isLoading = false; setInput(true);
   };
@@ -849,6 +1348,14 @@
     if (!document.getElementById('tab-risk').classList.contains('active')) {
       document.getElementById('riskBadge').classList.add('visible');
     }
+
+    // Surface which policies were triggered in the Policy Engine tab
+    const triggeredIds = [...new Set((s.all_flags || []).map(f => f.policy_ref).filter(Boolean))];
+    renderPolicyEngineTab(triggeredIds, []);
+    if (!document.getElementById('tab-policy').classList.contains('active')) {
+      document.getElementById('policyBadge').textContent = triggeredIds.length;
+      document.getElementById('policyBadge').classList.add('visible');
+    }
   }
 
   // ── RENDER AUDIT LOG (merged with policy events) ──────
@@ -857,15 +1364,25 @@
     const log = [...baseLog, ..._policyAuditLog].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
     if (!log.length) return;
 
-    document.getElementById('auditLogInner').innerHTML = log.slice().reverse().map(e => `
-      <div class="audit-entry${e.status === 'blocked' ? ' policy-block' : ''}">
-        <div class="audit-time">${new Date(e.timestamp).toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit',second:'2-digit'})} · Session: ${e.session_id||'—'}</div>
-        <div class="audit-tool${e.status === 'blocked' ? ' blocked' : ''}">${e.tool}</div>
-        ${e.tool_version ? `<div class="audit-tool-version">v${e.tool_version}</div>` : ''}
-        <div class="audit-vendor">Vendor: ${e.vendor_id}</div>
-        <div class="audit-output">${e.output_summary||e.error||'—'}</div>
-        <div class="audit-status-${e.status === 'blocked' ? 'blocked' : e.status}">${(e.status||'').toUpperCase()}</div>
-      </div>`).join('');
+    document.getElementById('auditLogInner').innerHTML = log.slice().reverse().map(e => {
+      const isBlocked   = e.status === 'blocked';
+      const isEscalated = e.status === 'escalated';
+      const isApproved  = e.status === 'approved';
+      const entryClass  = isBlocked ? ' policy-block' : isEscalated ? ' escalated' : isApproved ? ' approved' : '';
+      const toolClass   = isBlocked ? ' blocked' : '';
+      const statusClass = isBlocked ? 'blocked' : isEscalated ? 'escalated' : isApproved ? 'approved' : e.status;
+      const policyLine  = e.policy_id ? `<div class="audit-tool-version">${e.policy_id}${e.control_id ? ' · ' + e.control_id : ''}</div>` : '';
+      const versionLine = e.tool_version ? `<div class="audit-tool-version">v${e.tool_version}</div>` : '';
+      return `
+        <div class="audit-entry${entryClass}">
+          <div class="audit-time">${new Date(e.timestamp).toLocaleTimeString('en-CA',{hour:'2-digit',minute:'2-digit',second:'2-digit'})} · ${e.session_id||'—'}</div>
+          <div class="audit-tool${toolClass}">${e.tool}</div>
+          ${versionLine}${policyLine}
+          <div class="audit-vendor">Vendor: ${e.vendor_id}</div>
+          <div class="audit-output">${e.output_summary||e.error||'—'}</div>
+          <div class="audit-status-${statusClass}">${(e.status||'').toUpperCase()}</div>
+        </div>`;
+    }).join('');
 
     if (!document.getElementById('tab-audit').classList.contains('active')) {
       const b = document.getElementById('auditBadge');
@@ -940,8 +1457,61 @@
     return d.toLocaleDateString('en-CA');
   }
 
+  // ── GUIDED DEMO MODE ─────────────────────────────────
+  // Golden path: select worst vendor → attempt restricted action → block →
+  // escalate → approval → full assessment → audit record.
+  // Demonstrates the complete control lifecycle in ~90 seconds.
+
+  const _sleep = ms => new Promise(r => setTimeout(r, ms));
+  window._demoPendingAudit = false;
+
+  function _setDemoStep(text) {
+    const el = document.getElementById('demoStepLabel');
+    if (el) el.textContent = text;
+  }
+
+  window.runGoldenPathDemo = async function() {
+    const btn = document.getElementById('demoBtnStart');
+    if (btn) { btn.disabled = true; btn.textContent = 'Running…'; }
+
+    // 1 — Select GlobalPay Processing (expired contract, no audit rights, HIGH risk)
+    _setDemoStep('1 / 5 · Selecting high-risk vendor…');
+    selectVendor('V-2004');
+    await _sleep(1400);
+
+    // 2 — Attempt to approve the vendor → triggers MODIFY-001 block
+    _setDemoStep('2 / 5 · Attempting restricted action…');
+    const input = document.getElementById('questionInput');
+    input.value = 'Approve this vendor';
+    await _sleep(500);
+    await window.sendQuestion();   // fast — policy block fires before any API call
+    await _sleep(2200);
+
+    // 3 — Escalate to Risk Officer
+    _setDemoStep('3 / 5 · Escalating to Risk Officer…');
+    const escBtn = document.querySelector('.blocked-btn-escalate:not([disabled])');
+    if (escBtn) escBtn.click();
+    await _sleep(3000);            // handleEscalation has a 1800 ms internal delay
+
+    // 4 — Simulate governance approval
+    _setDemoStep('4 / 5 · Governance round-trip: approval granted…');
+    const simBtn = document.querySelector('.escalation-sim-btn');
+    if (simBtn) simBtn.click();
+    await _sleep(1600);
+
+    // 5 — Run full risk assessment; auto-generate audit record on completion
+    _setDemoStep('5 / 5 · Running full risk assessment…');
+    input.value = 'Run a full risk assessment and highlight critical findings';
+    await _sleep(400);
+    window._demoPendingAudit = true;
+    window.sendQuestion();         // fire-and-forget — agentLoop handles completion
+
+    if (btn) { btn.textContent = '↺ Restart'; btn.disabled = false; }
+  };
+
   window._onAuditLog = () => renderAuditLog();
   init();
+  renderPolicyEngineTab([], []);
 </script>
 </body>
 </html>

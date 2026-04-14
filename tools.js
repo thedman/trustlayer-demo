@@ -505,6 +505,84 @@ function _get_contract_flags(vendor) {
   return { policy_flags: flags, right_to_audit: c.right_to_audit, contract_status: isExpired ? "EXPIRED" : daysUntilExpiry < 90 ? "EXPIRING_SOON" : "ACTIVE" };
 }
 
+// ── POLICY REGISTRY ──────────────────────────────────
+// Authoritative list of active enterprise policies evaluated by the deterministic
+// control layer. Each policy is versioned, mapped to a control ID, and aligned
+// to one or more regulatory frameworks. The AI never modifies this registry.
+
+export const POLICY_REGISTRY = [
+  {
+    id: "TPRM-POL-001", name: "OSFI B-10 Vendor Acknowledgment",
+    version: "v2026.01", control_id: "CTRL-REG-001", category: "Regulatory Compliance",
+    regulatory_mapping: ["OSFI B-10", "OCC 2013-29"],
+    description: "All vendors processing data on behalf of a regulated entity must acknowledge OSFI B-10 third-party risk expectations.",
+    status: "active"
+  },
+  {
+    id: "TPRM-POL-002", name: "Third-Party Contract Standards",
+    version: "v2026.01", control_id: "CTRL-CONT-001", category: "Contract Governance",
+    regulatory_mapping: ["OSFI B-10", "SR 13-19"],
+    description: "All Tier 1/2 vendor contracts must include right-to-audit, data ownership, and data residency clauses.",
+    status: "active"
+  },
+  {
+    id: "TPRM-POL-003", name: "SOC 2 Report Currency Standard",
+    version: "v2026.01", control_id: "CTRL-SOC-001", category: "Assurance & Compliance",
+    regulatory_mapping: ["NIST CSF", "ISO 27001"],
+    description: "SOC 2 Type II required for all Tier 1/2 vendors. Reports must be no older than 12 months.",
+    status: "active"
+  },
+  {
+    id: "TPRM-POL-005", name: "Penetration Testing Requirements",
+    version: "v2026.01", control_id: "CTRL-SEC-002", category: "Security Assurance",
+    regulatory_mapping: ["NIST CSF", "ISO 27001"],
+    description: "Annual penetration testing required for all Tier 1/2 vendors. Tests older than 18 months are critically overdue.",
+    status: "active"
+  },
+  {
+    id: "SEC-POL-007", name: "Multi-Factor Authentication Standard",
+    version: "v2026.01", control_id: "CTRL-IAM-001", category: "Access Control",
+    regulatory_mapping: ["NIST CSF", "ISO 27001"],
+    description: "MFA required for all Tier 1 vendors processing Confidential or Restricted data.",
+    status: "active"
+  },
+  {
+    id: "SEC-POL-011", name: "Encryption Standards",
+    version: "v2026.01", control_id: "CTRL-ENC-001", category: "Data Protection",
+    regulatory_mapping: ["OSFI B-10", "NIST CSF"],
+    description: "AES-256 required for data at rest; TLS 1.3 strongly preferred for data in transit.",
+    status: "active"
+  },
+  {
+    id: "TPRM-POL-006", name: "Incident Response Plan Requirement",
+    version: "v2026.01", control_id: "CTRL-OPS-001", category: "Operational Resilience",
+    regulatory_mapping: ["OSFI B-10", "NIST CSF"],
+    description: "All vendors must maintain and provide evidence of a documented incident response plan.",
+    status: "active"
+  },
+  {
+    id: "SCOPE-001", name: "Vendor Scope Restriction",
+    version: "v2026.01", control_id: "CTRL-DATA-001", category: "Data Access Control",
+    regulatory_mapping: ["OSFI B-10"],
+    description: "AI agent access is scoped to the currently selected vendor only. Cross-vendor queries require elevated session authorization.",
+    status: "active"
+  },
+  {
+    id: "EXPORT-001", name: "Raw Document Export Control",
+    version: "v2026.01", control_id: "CTRL-DATA-002", category: "Data Access Control",
+    regulatory_mapping: ["OSFI B-10", "PRIV-POL-004"],
+    description: "Raw third-party documents may not be exported from the controlled assessment environment without explicit authorization.",
+    status: "active"
+  },
+  {
+    id: "MODIFY-001", name: "Read-Only Agent Authorization",
+    version: "v2026.01", control_id: "CTRL-DATA-003", category: "Agent Authorization",
+    regulatory_mapping: ["OSFI B-10", "NIST CSF"],
+    description: "AI agents in assessment mode are authorized for read-only operations only. Write actions and approval decisions require human authorization by a designated Control Owner.",
+    status: "active"
+  }
+];
+
 // ── TOOL DEFINITIONS FOR CLAUDE API ──────────────────
 export const TOOL_DEFINITIONS = [
   {
