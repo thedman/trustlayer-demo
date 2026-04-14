@@ -887,7 +887,9 @@
   // ── POLICY ENGINE TAB RENDERER ───────────────────────
   // triggeredPolicyIds = policies flagged by the deterministic risk engine (assessment)
   // blockedPolicyIds   = policies triggered by the pre-query gate (blocked actions)
-  function renderPolicyEngineTab(triggeredPolicyIds = [], blockedPolicyIds = []) {
+  // allFlags           = full flag array from generate_risk_summary, used to show
+  //                      the specific findings under each triggered policy card
+  function renderPolicyEngineTab(triggeredPolicyIds = [], blockedPolicyIds = [], allFlags = []) {
     const tab = document.getElementById('tabPolicy');
     if (!tab) return;
 
@@ -896,6 +898,27 @@
       if (!grouped[p.category]) grouped[p.category] = [];
       grouped[p.category].push(p);
     });
+
+    // Index flags by policy_ref so triggered cards can show their evidence
+    const flagsByPolicy = {};
+    allFlags.forEach(f => {
+      const ref = f.policy_ref || '';
+      if (!flagsByPolicy[ref]) flagsByPolicy[ref] = [];
+      flagsByPolicy[ref].push(f);
+    });
+
+    function renderFindings(policyId) {
+      const flags = flagsByPolicy[policyId] || [];
+      if (!flags.length) return '';
+      const sevColor = { CRITICAL: 'var(--red)', HIGH: 'var(--orange)', MEDIUM: 'var(--gold)' };
+      return `<div style="margin-top:7px;display:flex;flex-direction:column;gap:4px;">
+        ${flags.map(f => `
+          <div style="border-left:2px solid ${sevColor[f.severity]||'var(--mist)'};padding:4px 8px;background:var(--paper-2);border-radius:0 4px 4px 0;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.44rem;color:${sevColor[f.severity]||'var(--mist)'};font-weight:600;margin-bottom:2px;">${esc(f.severity)} · ${esc(f.control||f.area||'')}</div>
+            <div style="font-size:0.67rem;color:var(--slate);line-height:1.5;">${esc(f.finding)}</div>
+          </div>`).join('')}
+      </div>`;
+    }
 
     let html = `
       <div class="policy-engine-tab-header">
@@ -923,6 +946,7 @@
             <div class="policy-card-desc">${esc(policy.description)}</div>
             <div class="policy-card-meta">${policy.regulatory_mapping.map(r => `<span class="policy-meta-tag">${esc(r)}</span>`).join('')}</div>
             <div class="policy-ctrl-id">${esc(policy.control_id)} · ${esc(policy.version)}</div>
+            ${renderFindings(policy.id)}
           </div>`;
       });
       html += `<div class="policy-engine-section">All registered controls</div>`;
@@ -1349,9 +1373,10 @@
       document.getElementById('riskBadge').classList.add('visible');
     }
 
-    // Surface which policies were triggered in the Policy Engine tab
+    // Surface which policies were triggered in the Policy Engine tab,
+    // passing the full flag list so each triggered card can show its evidence
     const triggeredIds = [...new Set((s.all_flags || []).map(f => f.policy_ref).filter(Boolean))];
-    renderPolicyEngineTab(triggeredIds, []);
+    renderPolicyEngineTab(triggeredIds, [], s.all_flags || []);
     if (!document.getElementById('tab-policy').classList.contains('active')) {
       document.getElementById('policyBadge').textContent = triggeredIds.length;
       document.getElementById('policyBadge').classList.add('visible');

@@ -522,7 +522,7 @@ export const POLICY_REGISTRY = [
     id: "TPRM-POL-002", name: "Third-Party Contract Standards",
     version: "v2026.01", control_id: "CTRL-CONT-001", category: "Contract Governance",
     regulatory_mapping: ["OSFI B-10", "SR 13-19"],
-    description: "All Tier 1/2 vendor contracts must include right-to-audit, data ownership, and data residency clauses.",
+    description: "All Tier 1/2 vendor contracts must include right-to-audit, data ownership, and data residency clauses. Contracts must remain current — renewal must be initiated no less than 90 days before expiry. Operating on expired terms is a critical control failure.",
     status: "active"
   },
   {
