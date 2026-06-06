@@ -515,105 +515,105 @@ export const POLICY_REGISTRY = [
     id: "TPRM-POL-001", name: "OSFI B-10 Vendor Acknowledgment",
     version: "v2026.01", control_id: "CTRL-REG-001", category: "Regulatory Compliance",
     regulatory_mapping: ["OSFI B-10", "OCC 2013-29"],
-    description: "All vendors processing data on behalf of a regulated entity must acknowledge OSFI B-10 third-party risk expectations.",
+    description: "Demo control requiring regulatory acknowledgement for in-scope vendors.",
     status: "active"
   },
   {
     id: "TPRM-POL-002", name: "Third-Party Contract Standards",
     version: "v2026.01", control_id: "CTRL-CONT-001", category: "Contract Governance",
     regulatory_mapping: ["OSFI B-10", "SR 13-19"],
-    description: "All Tier 1/2 vendor contracts must include right-to-audit, data ownership, and data residency clauses. Contracts must remain current — renewal must be initiated no less than 90 days before expiry. Operating on expired terms is a critical control failure.",
+    description: "Demo control for contract completeness and currency.",
     status: "active"
   },
   {
     id: "TPRM-POL-003", name: "SOC 2 Report Currency Standard",
     version: "v2026.01", control_id: "CTRL-SOC-001", category: "Assurance & Compliance",
     regulatory_mapping: ["NIST CSF", "ISO 27001"],
-    description: "SOC 2 Type II required for all Tier 1/2 vendors. Reports must be no older than 12 months.",
+    description: "Demo control for assurance report coverage and currency.",
     status: "active"
   },
   {
     id: "TPRM-POL-005", name: "Penetration Testing Requirements",
     version: "v2026.01", control_id: "CTRL-SEC-002", category: "Security Assurance",
     regulatory_mapping: ["NIST CSF", "ISO 27001"],
-    description: "Annual penetration testing required for all Tier 1/2 vendors. Tests older than 18 months are critically overdue.",
+    description: "Demo control for security testing currency.",
     status: "active"
   },
   {
     id: "SEC-POL-007", name: "Multi-Factor Authentication Standard",
     version: "v2026.01", control_id: "CTRL-IAM-001", category: "Access Control",
     regulatory_mapping: ["NIST CSF", "ISO 27001"],
-    description: "MFA required for all Tier 1 vendors processing Confidential or Restricted data.",
+    description: "Demo control for strong authentication.",
     status: "active"
   },
   {
     id: "SEC-POL-011", name: "Encryption Standards",
     version: "v2026.01", control_id: "CTRL-ENC-001", category: "Data Protection",
     regulatory_mapping: ["OSFI B-10", "NIST CSF"],
-    description: "AES-256 required for data at rest; TLS 1.3 strongly preferred for data in transit.",
+    description: "Demo control for encryption posture.",
     status: "active"
   },
   {
     id: "TPRM-POL-006", name: "Incident Response Plan Requirement",
     version: "v2026.01", control_id: "CTRL-OPS-001", category: "Operational Resilience",
     regulatory_mapping: ["OSFI B-10", "NIST CSF"],
-    description: "All vendors must maintain and provide evidence of a documented incident response plan.",
+    description: "Demo control for incident response readiness.",
     status: "active"
   },
   {
     id: "TPRM-POL-008", name: "Subprocessor Concentration Risk",
     version: "v2026.01", control_id: "CTRL-SC-001", category: "Supply Chain Risk",
     regulatory_mapping: ["OSFI B-10", "SR 13-19"],
-    description: "Vendors with more than 8 active subprocessors present elevated supply chain risk. Each subprocessor must be independently assessed and approved.",
+    description: "Demo control for supply-chain concentration.",
     status: "active"
   },
   {
     id: "TPRM-POL-009", name: "Business Continuity Testing",
     version: "v2026.01", control_id: "CTRL-OPS-002", category: "Operational Resilience",
     regulatory_mapping: ["OSFI B-10", "NIST CSF"],
-    description: "All vendors must test their business continuity plan at least annually. Evidence of testing must be available on request.",
+    description: "Demo control for operational resilience evidence.",
     status: "active"
   },
   {
     id: "HR-POL-003", name: "Personnel Security — Background Checks",
     version: "v2026.01", control_id: "CTRL-HR-001", category: "Personnel Security",
     regulatory_mapping: ["OSFI B-10", "ISO 27001"],
-    description: "Background screening must cover all employees and contractors with access to organizational data, without geographic limitation.",
+    description: "Demo control for personnel screening coverage.",
     status: "active"
   },
   {
     id: "SEC-POL-012", name: "Patch Management SLA",
     version: "v2026.01", control_id: "CTRL-SEC-003", category: "Security Assurance",
     regulatory_mapping: ["NIST CSF", "ISO 27001"],
-    description: "Critical vulnerabilities must be patched within 14 days for all Tier 1 vendors. High severity vulnerabilities must be patched within 30 days.",
+    description: "Demo control for patch management expectations.",
     status: "active"
   },
   {
     id: "PRIV-POL-004", name: "Data Residency Requirements",
     version: "v2026.01", control_id: "CTRL-PRIV-001", category: "Data Privacy & Residency",
     regulatory_mapping: ["OSFI B-10", "PIPEDA"],
-    description: "Vendor contracts must include an explicit data residency clause where organizational data is processed or stored outside Canada. Data transfers without contractual controls are prohibited.",
+    description: "Demo control for data residency commitments.",
     status: "active"
   },
   {
     id: "SCOPE-001", name: "Vendor Scope Restriction",
     version: "v2026.01", control_id: "CTRL-DATA-001", category: "Data Access Control",
     regulatory_mapping: ["OSFI B-10"],
-    description: "AI agent access is scoped to the currently selected vendor only. Cross-vendor queries require elevated session authorization.",
+    description: "Demo control for selected-record scope.",
     status: "active"
   },
   {
     id: "EXPORT-001", name: "Raw Document Export Control",
     version: "v2026.01", control_id: "CTRL-DATA-002", category: "Data Access Control",
     regulatory_mapping: ["OSFI B-10", "PRIV-POL-004"],
-    description: "Raw third-party documents may not be exported from the controlled assessment environment without explicit authorization.",
+    description: "Demo control for raw-document export boundaries.",
     status: "active"
   },
   {
     id: "MODIFY-001", name: "Read-Only Agent Authorization",
     version: "v2026.01", control_id: "CTRL-DATA-003", category: "Agent Authorization",
     regulatory_mapping: ["OSFI B-10", "NIST CSF"],
-    description: "AI agents in assessment mode are authorized for read-only operations only. Write actions and approval decisions require human authorization by a designated Control Owner.",
+    description: "Demo control for read-only assessment behavior.",
     status: "active"
   }
 ];
@@ -622,7 +622,7 @@ export const POLICY_REGISTRY = [
 export const TOOL_DEFINITIONS = [
   {
     name: "get_vendor_profile",
-    description: "Retrieve a scoped vendor overview including category, tier, current risk level, and available documents. Always call this first before any other tool.",
+    description: "Retrieve a scoped vendor overview for the selected demo record.",
     input_schema: {
       type: "object",
       properties: {
@@ -633,7 +633,7 @@ export const TOOL_DEFINITIONS = [
   },
   {
     name: "get_soc2_findings",
-    description: "Retrieve structured SOC 2 analysis including exceptions, encryption standards, MFA status, penetration test currency, and deterministic policy flags. The policy engine has already applied organizational controls policy — do not re-evaluate, only explain.",
+    description: "Retrieve summarized assurance findings for the selected demo record.",
     input_schema: {
       type: "object",
       properties: {
@@ -644,7 +644,7 @@ export const TOOL_DEFINITIONS = [
   },
   {
     name: "get_security_questionnaire",
-    description: "Retrieve structured security questionnaire findings including incident history, background check scope, OSFI B-10 acknowledgment, and deterministic policy flags.",
+    description: "Retrieve summarized questionnaire findings for the selected demo record.",
     input_schema: {
       type: "object",
       properties: {
@@ -655,7 +655,7 @@ export const TOOL_DEFINITIONS = [
   },
   {
     name: "get_contract_review",
-    description: "Retrieve structured contract analysis including expiry status, audit rights, data residency clause, liability cap, and deterministic policy flags.",
+    description: "Retrieve summarized contract observations for the selected demo record.",
     input_schema: {
       type: "object",
       properties: {
@@ -666,7 +666,7 @@ export const TOOL_DEFINITIONS = [
   },
   {
     name: "generate_risk_summary",
-    description: "Generate a comprehensive risk summary aggregating all findings across SOC 2, security questionnaire, and contract. Includes deterministic risk score, flag counts, required actions, and recommended review frequency. Call this to produce the final structured risk output.",
+    description: "Generate a demo risk summary from the scoped findings.",
     input_schema: {
       type: "object",
       properties: {
@@ -677,44 +677,6 @@ export const TOOL_DEFINITIONS = [
   }
 ];
 
-export const SYSTEM_PROMPT = `You are a controlled AI assistant demonstrating Govagentic — a governance framework for AI-assisted third-party risk management in regulated financial services.
+export const SYSTEM_PROMPT = `You are a controlled assistant for a public portfolio demo of AI-assisted third-party risk review.
 
-Your role is to help risk analysts assess vendor risk posture by retrieving and explaining structured findings from controlled tools.
-
-This demo illustrates a control-first architecture where:
-- All vendor data is accessed through controlled tools only — never directly
-- Risk scoring and policy flag determination is done by a deterministic rules engine, not the AI
-- The AI explains findings and synthesizes analysis — it never generates risk scores or policy judgments
-- Every tool call is logged to an immutable audit trail visible in the panel
-- Regulatory alignment: OSFI B-10, OCC Third-Party Risk Guidance, Federal Reserve SR 13-19, NIST CSF
-
-CRITICAL RULES:
-1. Use tools for all data. Never infer, estimate, or fabricate vendor information.
-2. Risk scores and policy flags come from the deterministic engine — explain them, never override or second-guess them.
-3. Always start with get_vendor_profile, then use other tools as needed.
-4. For a full risk assessment, call all four document tools then generate_risk_summary.
-5. Always reference the policy_ref codes when discussing flags — this supports audit traceability.
-6. Do not assess vendors outside the current request scope.
-7. Do not recommend vendor approval or rejection — provide findings and recommended actions only.
-
-TOOL CALL RULES — STRICTLY ENFORCED:
-1. Call get_vendor_profile ONCE only.
-2. Call get_soc2_findings ONCE only.
-3. Call get_security_questionnaire ONCE only.
-4. Call get_contract_review ONCE only.
-5. Call generate_risk_summary ONCE only, after all other tools have been called.
-6. If you have already called a tool and received a result, you MUST NOT call it again. The result is complete and final.
-7. Calling a tool more than once is a policy violation and wastes the assessment budget.
-
-Total tool calls for a full assessment: exactly 5. No more.
-
-RESPONSE FORMAT:
-Structure your response clearly:
-- Vendor Overview (brief)
-- Key Risk Findings (organized by severity: Critical → High → Medium)
-- Document-by-Document Summary (SOC 2, Questionnaire, Contract)
-- Required Actions
-- Recommended Next Steps
-
-Language: precise, professional, risk-literate. This output may be reviewed by auditors.
-Keep responses concise and structured. Limit the total response to 800 words maximum. Use headers and bullets but avoid repeating information already visible in the Risk Card. Focus on the most important findings and required actions only.`;
+Use only the provided tools and selected vendor scope. Summarize demo findings clearly, avoid fabricating facts, and do not recommend final approval or rejection. Keep responses concise, professional, and focused on the most important risks and next actions.`;

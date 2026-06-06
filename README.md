@@ -71,6 +71,15 @@ This work connects to ongoing thinking on AI governance, system behavior, and ri
 
 ---
 
+## Portfolio Demo Notice
+
+This repository is a public portfolio demonstration. It uses synthetic vendor, control, and audit data and is not connected to production systems or real client environments.
+
+No secrets or credentials are intended to be stored in this repository. Any live API credentials used by the demonstration must be stored server-side in the hosting platform's secret manager and rotated outside the public codebase.
+
+The implementation intentionally shows the shape of a controlled AI governance workflow without publishing a complete proprietary assessment method or production control architecture.
+---
+
 ## Notes
 
 This is a conceptual prototype intended to explore how governance can be implemented at the system level.
