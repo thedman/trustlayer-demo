@@ -1679,6 +1679,7 @@
     _setDemoStep('1 / 5 · Selecting high-risk vendor…');
     if (_initPromise) await _initPromise;
     selectVendor('V-2004');
+    console.log('[TrustLayer demo] after select vendor');
     showCoachmark('#card-V-2004', 'Start here: selecting a high-risk Tier 1 vendor gives the control layer something meaningful to evaluate.', { placement: 'right' });
     await _sleep(2400);
 
@@ -1688,7 +1689,9 @@
     input.value = 'Approve this vendor';
     showCoachmark('#questionInput', 'The AI attempts a restricted action, but the policy layer evaluates the request before any action is taken.', { placement: 'top' });
     await _sleep(500);
+    console.log('[TrustLayer demo] before send restricted action');
     await window.sendQuestion();   // fast — policy block fires before any API call
+    console.log('[TrustLayer demo] after send restricted action');
     showCoachmark('.blocked-card', 'The AI attempts a restricted action, but the policy layer evaluates the request before any action is taken.', { placement: 'left' });
     await _sleep(2200);
 
@@ -1711,10 +1714,36 @@
     showCoachmark('#tab-audit, #generateAuditRecordBtn', 'The session produces traceable audit evidence: tool calls, policy decisions, escalation, and approval history.', { placement: 'left' });
     input.value = 'Run a full risk assessment and highlight critical findings';
     await _sleep(400);
+    console.log('[TrustLayer demo] complete handoff');
     window._demoPendingAudit = true;
     window.sendQuestion();         // fire-and-forget — agentLoop handles completion
 
     if (btn) { btn.textContent = '↺ Restart'; btn.disabled = false; }
+  };
+
+  const _runGoldenPathDemoCore = window.runGoldenPathDemo;
+  window.runGoldenPathDemo = async function() {
+    const btn = document.getElementById('demoBtnStart');
+    console.log('[TrustLayer demo] start');
+    clearCoachmark();
+    showCoachmark(null, 'Guided demo started. TrustLayer will now walk through vendor selection, policy blocking, escalation, approval, and audit evidence.', { label: 'Guided demo' });
+
+    try {
+      console.log('[TrustLayer demo] before init wait');
+      if (_initPromise) {
+        await Promise.race([
+          _initPromise,
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Demo initialization timed out')), 5000))
+        ]);
+      }
+      console.log('[TrustLayer demo] after init wait');
+      await _runGoldenPathDemoCore();
+    } catch (err) {
+      console.error('[TrustLayer demo] failed', err);
+      showCoachmark(null, 'The guided demo encountered an error. Open the browser console for details.', { label: 'Demo error' });
+    } finally {
+      if (btn) { btn.textContent = '↺ Restart'; btn.disabled = false; }
+    }
   };
 
   const demoBtnStart = document.getElementById('demoBtnStart');
