@@ -59,6 +59,7 @@
     .chat-panel { background: var(--paper); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
     .vendor-header { padding: 13px 20px; border-bottom: 1px solid var(--border-2); flex-shrink: 0; }
     .vendor-header-empty { font-size: 0.78rem; color: var(--mist); font-style: italic; }
+    .vendor-header-start { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .vendor-header-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
     .vendor-header-meta { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; color: var(--mist); }
 
@@ -273,10 +274,6 @@
     .demo-btn:disabled { opacity: 0.45; cursor: not-allowed; }
     .demo-step-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.44rem; color: rgba(201,168,76,0.65); transition: opacity 0.3s; }
     #demoBtnStart {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 10001;
       padding: 8px 16px;
       background: var(--gold-light);
       border-color: var(--gold-light);
@@ -357,7 +354,7 @@
       }
       .coachmark::before { display: none; }
       .coachmark-dock { top: 54px; font-size: 0.82rem; }
-      #demoBtnStart { right: 12px; bottom: 12px; }
+      .vendor-header-start { align-items: flex-start; flex-direction: column; }
     }
 
     .topbar-policy { display: flex; align-items: center; gap: 5px; }
@@ -460,7 +457,10 @@
   <!-- COL 2: CHAT -->
   <div class="chat-panel">
     <div class="vendor-header" id="vendorHeader">
-      <div class="vendor-header-empty">Select a vendor to begin assessment</div>
+      <div class="vendor-header-start">
+        <div class="vendor-header-empty">Select a vendor to begin assessment</div>
+        <button class="demo-btn" id="demoBtnStart" onclick="runGoldenPathDemo()">▶ Start Demo</button>
+      </div>
     </div>
     <div class="chat-area" id="chatArea">
       <div class="chat-empty" id="chatEmpty">
@@ -543,7 +543,6 @@
   <span class="arch-tagline">Policy engine determines risk · AI explains and synthesizes · Every step attributable · Audit-ready by design</span>
   <span style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0;">
     <span class="demo-step-label" id="demoStepLabel"></span>
-    <button class="demo-btn" id="demoBtnStart" onclick="runGoldenPathDemo()">▶ Start Demo</button>
   </span>
 </div>
 
