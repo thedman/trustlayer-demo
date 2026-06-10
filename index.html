@@ -47,7 +47,6 @@
     .vendor-card { background: var(--paper); border: 1px solid var(--border-2); border-radius: 8px; padding: 11px 13px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.2s; }
     .vendor-card:hover { border-color: var(--border); }
     .vendor-card.selected { border-color: var(--teal); background: var(--teal-bg); }
-    .demo-coachmark-target { position: relative; z-index: 3; box-shadow: 0 0 0 3px rgba(201,168,76,0.34), 0 10px 26px rgba(15,25,35,0.18); }
     .vendor-name { font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
     .vendor-id { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; color: var(--mist); margin-bottom: 5px; }
     .vendor-meta { font-size: 0.7rem; color: var(--slate); line-height: 1.45; margin-bottom: 6px; }
@@ -277,15 +276,15 @@
     .coachmark {
       position: fixed;
       z-index: 9999;
-      width: min(360px, calc(100vw - 28px));
-      padding: 14px 16px;
+      width: min(320px, calc(100vw - 28px));
+      padding: 12px 14px;
       border-radius: 8px;
-      background: #fff7df;
-      border: 2px solid var(--gold-light);
-      box-shadow: 0 18px 48px rgba(15,25,35,0.32);
-      color: #0f1923;
-      font-size: 0.86rem;
-      line-height: 1.5;
+      background: #fffaf0;
+      border: 1px solid rgba(138,109,47,0.35);
+      box-shadow: 0 14px 40px rgba(15,25,35,0.22);
+      color: var(--ink);
+      font-size: 0.78rem;
+      line-height: 1.55;
       pointer-events: none;
     }
     .coachmark::before {
@@ -293,9 +292,9 @@
       position: absolute;
       width: 12px;
       height: 12px;
-      background: #fff7df;
-      border-left: 2px solid var(--gold-light);
-      border-top: 2px solid var(--gold-light);
+      background: #fffaf0;
+      border-left: 1px solid rgba(138,109,47,0.35);
+      border-top: 1px solid rgba(138,109,47,0.35);
       transform: rotate(45deg);
     }
     .coachmark[data-placement="right"]::before { left: -7px; top: 18px; }
@@ -307,11 +306,11 @@
       display: block;
       margin-bottom: 4px;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.52rem;
+      font-size: 0.48rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--red);
-      font-weight: 600;
+      color: var(--gold);
+      font-weight: 500;
     }
     .coachmark-text { display: block; }
     @media (max-width: 760px) {
@@ -520,7 +519,6 @@
   let _selectedVendor = null, _vendors = [], _isLoading = false;
   let _auditCount = 0, _traceCount = 0, _decisionTrace = null;
   let _policyAuditLog = [];
-  let _initPromise = null;
 
   // ── TAB SWITCHING ─────────────────────────────────────
   // Note: trace reset removed from risk tab — only resets on vendor change
@@ -1555,7 +1553,6 @@
 
   function clearCoachmark() {
     document.getElementById('demoCoachmark')?.remove();
-    document.querySelectorAll('.demo-coachmark-target').forEach(el => el.classList.remove('demo-coachmark-target'));
     window.removeEventListener('resize', positionCoachmarkNearElement);
   }
 
@@ -1574,7 +1571,6 @@
       return;
     }
 
-    target.classList.add('demo-coachmark-target');
     const rect = target.getBoundingClientRect();
     const gap = 14;
     const margin = 14;
@@ -1629,10 +1625,7 @@
     bubble.innerHTML = `<span class="coachmark-kicker">${esc(options.label || 'Guided demo')}</span><span class="coachmark-text">${esc(text)}</span>`;
     document.body.appendChild(bubble);
 
-    const target = targetSelector ? document.querySelector(targetSelector) : null;
-    target?.scrollIntoView({ block: 'center', inline: 'nearest' });
     positionCoachmarkNearElement();
-    requestAnimationFrame(positionCoachmarkNearElement);
     window.addEventListener('resize', positionCoachmarkNearElement);
   }
 
@@ -1642,7 +1635,6 @@
   window.runGoldenPathDemo = async function() {
     const btn = document.getElementById('demoBtnStart');
     clearCoachmark();
-    if (_initPromise) await _initPromise;
     if (btn) { btn.disabled = true; btn.textContent = 'Running…'; }
 
     // 1 — Select GlobalPay Processing (expired contract, no audit rights, HIGH risk)
@@ -1687,7 +1679,7 @@
   };
 
   window._onAuditLog = () => renderAuditLog();
-  _initPromise = init();
+  init();
   renderPolicyEngineTab([], []);
 </script>
 </body>
