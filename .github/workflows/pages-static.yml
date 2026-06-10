@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  deployments: write
   pages: write
   id-token: write
 
@@ -36,6 +37,55 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
+      - name: Clear stale Pages deployment locks
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          node - <<'NODE'
+          const headers = {
+            authorization: `Bearer ${process.env.GH_TOKEN}`,
+            accept: 'application/vnd.github+json',
+            'x-github-api-version': '2022-11-28'
+          };
+          const api = async (path, options = {}) => {
+            const res = await fetch(`https://api.github.com/repos/${process.env.REPO}${path}`, {
+              ...options,
+              headers: {
+                ...headers,
+                ...(options.headers || {})
+              }
+            });
+            if (!res.ok) {
+              throw new Error(`${options.method || 'GET'} ${path} failed: ${res.status} ${await res.text()}`);
+            }
+            return res.status === 204 ? null : res.json();
+          };
+
+          const deployments = await api('/deployments?environment=github-pages&per_page=100');
+          for (const deployment of deployments) {
+            if (deployment.sha === process.env.SHA) continue;
+
+            const statuses = await api(`/deployments/${deployment.id}/statuses?per_page=10`);
+            const latest = statuses[0];
+            if (!latest || !['success', 'in_progress', 'queued', 'pending', 'waiting'].includes(latest.state)) {
+              continue;
+            }
+
+            console.log(`Marking stale Pages deployment ${deployment.id} (${deployment.sha}) as inactive; latest state was ${latest.state}`);
+            await api(`/deployments/${deployment.id}/statuses`, {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                state: 'inactive',
+                auto_inactive: false,
+                description: 'Clearing stale GitHub Pages deployment lock before new deploy'
+              })
+            });
+          }
+          NODE
 
       - name: Deploy to GitHub Pages
         id: deployment
